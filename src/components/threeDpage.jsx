@@ -28,7 +28,7 @@ const Box = () => {
   const [hovered, setHovered] = useState(false);
   const [active, setActive] = useState(false);
   const props = useSpring({
-    scale: active ? [3, 3, 3] : [1.5, 1.5, 1.5],
+    scale: active ? [2, 2, 2] : [1.5, 1.5, 1.5],
     color: hovered ? 'blue' : 'gray'
   })
 
