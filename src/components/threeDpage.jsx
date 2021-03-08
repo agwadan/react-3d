@@ -1,11 +1,30 @@
 import React, { useState, useRef } from 'react';
 import './threeDpage.css';
 
-import { Canvas, useFrame } from 'react-three-fiber';
+import { Canvas, extend, useFrame, useThree } from 'react-three-fiber';
 import { useSpring, a } from 'react-spring/three'; //--- a is shortcut for animated.
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+extend({ OrbitControls });
+
+const Controls = () => {
+  const orbitRef = useRef();
+  const { camera, gl } = useThree();
+
+  useFrame(() => {
+    orbitRef.current.update();
+  })
+
+  return (
+    <orbitControls
+      args={[camera, gl.domElement]}
+      ref={orbitRef}
+    />
+  )
+}
 
 const Box = () => {
-  const meshRef = useRef();
+
   const [hovered, setHovered] = useState(false);
   const [active, setActive] = useState(false);
   const props = useSpring({
@@ -13,13 +32,8 @@ const Box = () => {
     color: hovered ? 'blue' : 'gray'
   })
 
-  useFrame(() => {
-    meshRef.current.rotation.y += 0.01;
-  })
-
   return (
     <a.mesh
-      ref={meshRef}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
       onClick={() => setActive(!active)}
@@ -36,6 +50,7 @@ const ThreeDpage = () => {
     <div>
       <h2>3D Page</h2>
       <Canvas>
+        <Controls />
         <Box />
       </Canvas>
     </div>
