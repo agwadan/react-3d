@@ -49,6 +49,11 @@ const ThreeDpage = () => {
   return (
     <div>
       <h2>3D Page</h2>
+      <ul>
+        <li>Hover to change color.</li>
+        <li>click the box change size.</li>
+        <li>Click and hold to rotate the box.</li>
+      </ul>
       <Canvas>
         <Controls />
         <Box />
