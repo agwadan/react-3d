@@ -14,8 +14,10 @@ const Joan = () => {
   const [model, setModel] = useState();
 
   useEffect(() => {
-    new FBXLoader().load('/JOAN.fbx')
-  })
+    new FBXLoader().load('threeDmodels/JOAN.fbx', setModel);
+  }, [])
+  console.log(model);
+  return null;
 }
 
 const Controls = () => {
@@ -90,6 +92,7 @@ const ThreeDpage = () => {
         <Controls />
         <Box />
         <Plane />
+        <Joan />
       </Canvas>
     </div >
   )
