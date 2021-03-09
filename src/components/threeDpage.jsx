@@ -17,6 +17,9 @@ const Controls = () => {
 
   return (
     <orbitControls
+      autoRotate
+      maxPolarAngle={Math.PI / 3} /* controls how much the 3d object can be rotated */
+      minPolarAngle={Math.PI / 4} /* controls how much the 3d object can be rotated */
       args={[camera, gl.domElement]}
       ref={orbitRef}
     />
