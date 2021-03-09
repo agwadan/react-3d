@@ -1,12 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './threeDpage.css';
 
 import { Canvas, extend, useFrame, useThree } from 'react-three-fiber';
 import { useSpring, a } from 'react-spring/three'; //--- a is shortcut for animated.
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import * as THREE from 'three';
 
 extend({ OrbitControls });
+
+const Joan = () => {
+
+  const [model, setModel] = useState();
+
+  useEffect(() => {
+    new FBXLoader().load('/JOAN.fbx')
+  })
+}
 
 const Controls = () => {
   const orbitRef = useRef();
