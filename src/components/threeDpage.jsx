@@ -4,20 +4,20 @@ import './threeDpage.css';
 import { Canvas, extend, useFrame, useThree } from 'react-three-fiber';
 import { useSpring, a } from 'react-spring/three'; //--- a is shortcut for animated.
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three';
 
 extend({ OrbitControls });
 
-const Joan = () => {
+const Car = () => {
 
   const [model, setModel] = useState();
 
   useEffect(() => {
-    new FBXLoader().load('threeDmodels/JOAN.fbx', setModel);
+    new GLTFLoader().load('car_scene/scene.gltf', setModel);
   }, [])
   console.log(model);
-  return null;
+  return (model ? <primitive object={model.scene} /> : null);
 }
 
 const Controls = () => {
@@ -86,13 +86,12 @@ const ThreeDpage = () => {
         <li>Click the box change size.</li>
         <li>Click and hold to rotate the box.</li>
       </ul>
-      <Canvas camera={{ position: [0, 0, 5] }}
-        onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFShadowMap }}>
+      <Canvas camera={{ position: [0, 0, 5] }} onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFShadowMap }}>
         <fog attach='fog' args={['white', 5, 15]} />
         <Controls />
         <Box />
         <Plane />
-        <Joan />
+        <Car />
       </Canvas>
     </div >
   )
