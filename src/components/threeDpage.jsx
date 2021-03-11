@@ -14,8 +14,9 @@ const Car = () => {
   const [model, setModel] = useState();
 
   useEffect(() => {
-    new GLTFLoader().load('car_scene/scene.gltf', setModel);
+    new GLTFLoader().load('/car_scene/scene.gltf', setModel);
   }, [])
+
   console.log(model);
   return (model ? <primitive object={model.scene} /> : null);
 }
@@ -43,7 +44,7 @@ const Plane = () => {
   return (
     <mesh
       rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -0.5, 0]}
+      position={[0, -4, 0]}
       receiveShadow
     >
       <planeBufferGeometry attach='geometry' args={[100, 100]} />
@@ -58,7 +59,7 @@ const Box = () => {
   const [active, setActive] = useState(false);
   const props = useSpring({
     scale: active ? [1.5, 1.5, 1.5] : [1, 1, 1],
-    color: hovered ? 'blue' : 'gray'
+    color: hovered ? 'pink' : 'gray'
   })
 
   return (
@@ -70,7 +71,7 @@ const Box = () => {
       castShadow
     >
       <ambientLight />
-      <spotLight position={[0, 5, 10]} penumbra={1} castShadow />
+      <spotLight position={[0, 10, 10]} penumbra={1} castShadow />
       <boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
       <a.meshPhysicalMaterial attach='material' color={props.color} />
     </a.mesh>
@@ -87,7 +88,7 @@ const ThreeDpage = () => {
         <li>Click and hold to rotate the box.</li>
       </ul>
       <Canvas camera={{ position: [0, 0, 5] }} onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFShadowMap }}>
-        <fog attach='fog' args={['white', 5, 15]} />
+        <fog attach='fog' args={['white', 10, 15]} />
         <Controls />
         <Box />
         <Plane />
