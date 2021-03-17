@@ -47,8 +47,8 @@ const Plane = () => {
       position={[0, -4, 0]}
       receiveShadow
     >
-      <planeBufferGeometry attach='geometry' args={[100, 100]} />
-      <meshPhysicalMaterial attach='material' color='#ffffff' />
+      <planeBufferGeometry attach='geometry' args={[1000, 1000]} />
+      <meshPhysicalMaterial attach='material' color='#6e3c00' />
     </mesh>
   )
 }
@@ -90,10 +90,10 @@ const ThreeDpage = () => {
       </ul>
 
       <Canvas camera={{ position: [-100, -250, -50] }} onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFShadowMap }}>
-        <fog attach='fog' args={['pink', 10, 15]} />
+        <fog attach='fog' args={['pink', 80, 15]} />
         <Controls />
         <Box />
-        {/*  <Plane /> */}
+        <Plane />
         <Car />
       </Canvas>
     </div >
