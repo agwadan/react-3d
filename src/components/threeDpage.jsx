@@ -39,7 +39,7 @@ const Controls = () => {
     />
   )
 }
-
+/* 
 const Plane = () => {
   return (
     <mesh
@@ -51,7 +51,7 @@ const Plane = () => {
       <meshPhysicalMaterial attach='material' color='#6e3c00' />
     </mesh>
   )
-}
+} */
 
 const Box = () => {
 
@@ -93,7 +93,7 @@ const ThreeDpage = () => {
         <fog attach='fog' args={['pink', 80, 15]} />
         <Controls />
         <Box />
-        <Plane />
+        {/* <Plane /> */}
         <Car />
       </Canvas>
     </div >
