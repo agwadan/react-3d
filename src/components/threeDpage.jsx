@@ -88,7 +88,7 @@ const ThreeDpage = () => {
         <li>Click and hold to rotate the box.</li>
       </ul>
       <Canvas camera={{ position: [0, 0, 5] }} onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFShadowMap }}>
-        <fog attach='fog' args={['white', 10, 15]} />
+        {/* <fog attach='fog' args={['white', 10, 15]} /> */}
         <Controls />
         <Box />
         <Plane />
