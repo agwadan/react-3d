@@ -83,15 +83,17 @@ const ThreeDpage = () => {
     <div>
       <h2>3D Page</h2>
       <ul>
-        <li>Hover to change color.</li>
-        <li>Click the box change size.</li>
-        <li>Click and hold to rotate the box.</li>
+        <li>Click and hold to rotate the car.</li>
+        <li>Scroll to zoom in or out.</li>
+        <li>Right click and hold to move the canvas.</li>
+        <li><p>If you don't see anything yet, it's probably still loading. be patient :-)</p></li>
       </ul>
+
       <Canvas camera={{ position: [-100, -250, -50] }} onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFShadowMap }}>
-        {/* <fog attach='fog' args={['white', 10, 15]} /> */}
+        <fog attach='fog' args={['pink', 10, 15]} />
         <Controls />
         <Box />
-        <Plane />
+        {/*  <Plane /> */}
         <Car />
       </Canvas>
     </div >
