@@ -90,8 +90,8 @@ const ThreeDpage = () => {
 
       <Canvas camera={{ position: [-100, -250, -50] }} onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFShadowMap }}>
         <fog attach='fog' args={['pink', 20, 15]} />
-        <ambientLight />
-        <spotLight position={[0, 10, 10]} penumbra={1} castShadow />
+        <ambientLight intensity={0.35} />
+        <spotLight position={[50, 10, 10]} penumbra={1} castShadow />
         <Controls />
         {/* <Box /> */}
         <Plane />
