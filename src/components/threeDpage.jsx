@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './threeDpage.css';
 
 import { Canvas, extend, useFrame, useThree } from 'react-three-fiber';
-import { useSpring, a } from 'react-spring/three'; //--- "a" is shortcut for animated.
+//import { useSpring, a } from 'react-spring/three'; //--- "a" is shortcut for animated.
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three';
@@ -53,7 +53,7 @@ const Plane = () => {
   )
 }
 
-const Box = () => {
+/* const Box = () => {
 
   const [hovered, setHovered] = useState(false);
   const [active, setActive] = useState(false);
@@ -70,13 +70,12 @@ const Box = () => {
       scale={props.scale}
       castShadow
     >
-      <ambientLight />
-      <spotLight position={[0, 10, 10]} penumbra={1} castShadow />
+
       <boxBufferGeometry attach='geometry' args={[1, 1, 1]} />
       <a.meshPhysicalMaterial attach='material' color={props.color} />
     </a.mesh>
   )
-}
+} */
 
 const ThreeDpage = () => {
   return (
@@ -91,8 +90,10 @@ const ThreeDpage = () => {
 
       <Canvas camera={{ position: [-100, -250, -50] }} onCreated={({ gl }) => { gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFShadowMap }}>
         <fog attach='fog' args={['pink', 20, 15]} />
+        <ambientLight />
+        <spotLight position={[0, 10, 10]} penumbra={1} castShadow />
         <Controls />
-        <Box />
+        {/* <Box /> */}
         <Plane />
         <Car />
       </Canvas>
